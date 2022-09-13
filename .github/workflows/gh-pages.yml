@@ -44,7 +44,7 @@ jobs:
           restore-keys: ${{ runner.os }}-node- # optional
                     
       - name: Build Docs
-        run: npm run build:docs
+        run: npm run build
 
       - name: GitHub Pages action
         uses: peaceiris/actions-gh-pages@v3.7.3
