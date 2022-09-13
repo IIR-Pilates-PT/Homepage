@@ -26,12 +26,13 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v3.4.1
         with:
-          # Set always-auth in npmrc.
-          always-auth: actions/setup-node@v3.4.1 # optional, default is false
           # Version Spec of the version to use. Examples: 12.x, 10.15.1, >=10.15.0.
-          node-version: '12.x' # optional
+          node-version: 12.x # optional
           # File containing the version Spec of the version to use.  Examples: .nvmrc, .node-version, .tool-versions.
           
+      - name: Install Dependencies
+        run: npm install
+
       - name: Cache
         uses: actions/cache@v3.0.8
         with:
@@ -41,9 +42,9 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           # An ordered list of keys to use for restoring stale cache if no cache hit occurred for key. Note `cache-hit` returns false in this case.
           restore-keys: ${{ runner.os }}-node- # optional
-          
-      - run: npm ci
-      - run: npm run build
+                    
+      - name: Build Docs
+        run: npm run build:docs
 
       - name: GitHub Pages action
         uses: peaceiris/actions-gh-pages@v3.7.3
