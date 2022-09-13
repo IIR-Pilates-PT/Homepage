@@ -11,12 +11,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@main
+      - uses: actions/checkout@3
 
       - name: Setup Node.js environment
-        uses: actions/setup-node@main
+        uses: actions/setup-node@3
         with:
-          node-version: 12.x
+          node-version: 16.17.0
 
       - name: Cache
         uses: actions/cache@v3.0.8
@@ -31,6 +31,13 @@ jobs:
       - name: Build
         run: npm run build
 
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
       - name: GitHub Pages action
         uses: peaceiris/actions-gh-pages@v3.7.3
         with:
