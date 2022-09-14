@@ -5,23 +5,61 @@ import HelloWorld from './components/HelloWorld.vue'
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
+    <!-- <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" /> -->
+    <!-- <div class="wrapper">
       <HelloWorld msg="You did it!" />
 
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
-    </div>
+    </div> -->
   </header>
 
+  <div>
+    <b-navbar toggleable="lg" type="dark" variant="light">
+      <b-navbar-brand href="/">IIR</b-navbar-brand>
+
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav>
+          <b-nav-item-dropdown
+          id="my-nav-dropdown"
+          text="아이르"
+          toggle-class="nav-link-custom"
+          center>
+            <b-dropdown-item><RouterLink to="/about">아이르 소개</RouterLink></b-dropdown-item>
+            <b-dropdown-item><RouterLink to="/beforAfter">비포애프터</RouterLink></b-dropdown-item>
+            <b-dropdown-item><RouterLink to="/review">고객후기</RouterLink></b-dropdown-item>
+          </b-nav-item-dropdown>
+          <b-nav-item><RouterLink to="/program">프로그램</RouterLink></b-nav-item>
+          <b-nav-item-dropdown
+          id="my-nav-dropdown"
+          text="지점안내"
+          toggle-class="nav-link-custom"
+          center>
+            <b-dropdown-item><RouterLink to="/branch/snu">서울대입구점</RouterLink></b-dropdown-item>
+            <b-dropdown-item><RouterLink to="/branch/mia">미아점</RouterLink></b-dropdown-item>
+            <b-dropdown-item><RouterLink to="/branch/suyu">수유점</RouterLink></b-dropdown-item>
+            <b-dropdown-item><RouterLink to="/branch/nowon">노원점</RouterLink></b-dropdown-item>
+          </b-nav-item-dropdown>
+          <b-nav-item><RouterLink to="/notice">공지사항</RouterLink></b-nav-item>
+          <b-nav-item><RouterLink to="/event">이벤트</RouterLink></b-nav-item>
+        </b-navbar-nav>
+
+        <b-navbar-nav class="ml-auto" right>
+          <b-button size="sm" class="my-2 my-sm-0" type="submit">Reservation</b-button>
+        </b-navbar-nav>
+      </b-collapse>      
+    </b-navbar>
+  </div>
+  
   <RouterView />
 </template>
 
 <style scoped>
-header {
+/* header {
   line-height: 1.5;
   max-height: 100vh;
 }
@@ -81,5 +119,5 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
-}
+} */
 </style>
